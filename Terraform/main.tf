@@ -28,8 +28,8 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 1
 
   private_cluster_config {
-    enable_private_endpoint = false
-    enable_private_nodes    = false
+    enable_private_endpoint = true
+    enable_private_nodes    = true
     master_ipv4_cidr_block  = "10.13.0.0/28"
   }
   ip_allocation_policy {
@@ -71,7 +71,49 @@ resource "google_container_node_pool" "primary_nodes" {
     }
   }
 }
+# Create jump host 
+resource "google_compute_address" "my_internal_ip_addr" {
+  project      = "porjectg-iti"
+  address_type = "INTERNAL"
+  region       = "us-east1"
+  subnetwork   = google_compute_subnetwork.subnet.name
+  name         = "my-ip"
+  address      = "10.0.0.7"
+  description  = "An internal IP address for my jump host"
+}
 
+resource "google_compute_instance" "default" {
+  project      = "porjectg-iti"
+  zone         = "us-east1-b"
+  name         = "jump-host"
+  machine_type = "e2-medium"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+  network_interface {
+    network    = "vpc1"
+    subnetwork = "my-subnet" 
+    network_ip         = google_compute_address.my_internal_ip_addr.address
+  }
+
+}
+
+
+# Create Firewall to access jump host via iap
+resource "google_compute_firewall" "rules" {
+  project = "porjectg-iti"
+  name    = "allow-ssh"
+  network = google_compute_network.vpc.name 
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  source_ranges = ["35.235.240.0/20"]
+}
 resource "google_compute_router_nat" "cloud_nat" {
   name                  = "my-cloud-nat"
   router                = google_compute_router.vpc_router.name
