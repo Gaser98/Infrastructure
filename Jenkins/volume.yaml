@@ -30,7 +30,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - minikube 
+          - gke-my-gke-cluster-my-gke-cluster-7bb67888-q1lp 
 
 ---
 apiVersion: v1
