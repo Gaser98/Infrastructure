@@ -89,25 +89,25 @@ resource "google_compute_address" "nat_address" {
 }
 
 # resource "google_compute_firewall" "allow_nat_traffic" {
-#   name    = "allow-nat-traffic"
-#   network = google_compute_network.vpc.id
+  name    = "allow-nat-traffic"
+  network = google_compute_network.vpc.id
 
-#   allow {
-#     protocol = "icmp"
-#   }
+  allow {
+    protocol = "icmp"
+  }
 
-#   allow {
-#     protocol = "tcp"
-#     ports    = ["80", "443","22"]
-#   }
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "443","22"]
+  }
 
-#   allow {
-#     protocol = "udp"
-#     ports    = ["53"]
-#   }
+  allow {
+    protocol = "udp"
+    ports    = ["53"]
+  }
 
-#   source_ranges = ["0.0.0.0/0"]
-# }
+  source_ranges = ["0.0.0.0/0"]
+}
 
 
 
