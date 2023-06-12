@@ -28,8 +28,8 @@ resource "google_container_cluster" "primary" {
   initial_node_count = 1
 
   private_cluster_config {
-    enable_private_endpoint = true
-    enable_private_nodes    = true
+    enable_private_endpoint = false
+    enable_private_nodes    = false
     master_ipv4_cidr_block  = "10.13.0.0/28"
   }
   ip_allocation_policy {
@@ -88,26 +88,7 @@ resource "google_compute_address" "nat_address" {
   region =  "us-east1"
 }
 
-# resource "google_compute_firewall" "allow_nat_traffic" {
-  name    = "allow-nat-traffic"
-  network = google_compute_network.vpc.id
 
-  allow {
-    protocol = "icmp"
-  }
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80", "443","22"]
-  }
-
-  allow {
-    protocol = "udp"
-    ports    = ["53"]
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-}
 
 
 
