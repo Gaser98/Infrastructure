@@ -15,16 +15,29 @@ Jenkins server deployed with either k8s deployment files or Helm customized char
 # Commands
 ## k8s:
 kubectl create namespace 
+
 kubectl apply -f file.yaml -n devops-tools
 ### For monitoring:
 kubectl get pods
+
+
 kubectl get deployments
+
+
 kubectl get pv 
+
+
 kubectl get pvc
+
+
 kubectl get svc 
 ### For debugging:
 kubectl logs [pod]
+
+
 kubectl describe pod [pod] 
+
+
 kubectl decribe deployment [deployment]
 ## Helm:
 ### Helm installation commands
