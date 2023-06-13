@@ -5,12 +5,7 @@ Infrastructure created using terraform to deploy a private cloud cluster to host
 # Setup
 ## Terraform
 A private gke cluster of 3 nodes gor higher availability and sclaibility if needed with the needed resources to provide it with secure access which are:
-VPC
-Subnet
-Cloud NAT
-Cloud NAT router
-Jumphost server
-IAP ssh permission 
+VPC,Subnet,Cloud NAT,Cloud NAT router,Jumphost server,IAP ssh permission.
 ![image](https://github.com/Gaser98/Infrastructure/assets/76227165/ee741336-0738-46df-b6c7-6e9192af0e4f)
 
 After that,I setup IAP desktop to use the jumphost server to access my private cluster.
