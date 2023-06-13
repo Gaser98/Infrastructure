@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: jenkins-ubuntu-worker-svc
+  namespace: default 
+spec:
+  selector:
+    app: jenkins-worker
+  ports:
+  - protocol: TCP
+    port: 22
+    targetPort: 22

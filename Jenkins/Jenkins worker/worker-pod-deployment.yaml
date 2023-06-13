@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-worker
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-worker
+  template:
+    metadata:
+      labels:
+        app: jenkins-worker
+    spec:
+      containers:
+      - name: jenkins-worker
+        image: ahmadesmailshata/enhanced-agent
+        ports:
+        - containerPort: 22
+        volumeMounts:
+          - mountPath: /var/run/docker.sock
+            name: docker-sock
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
