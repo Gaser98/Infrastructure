@@ -4,7 +4,7 @@ Infrastructure created using terraform to deploy a private cloud cluster to host
 
 # Setup
 ## Terraform
-A private gke cluster of 3 nodes gor higher availability and sclaibility if needed with the needed resources to provide it with secure access which are:
+A private gke cluster of 3 nodes for higher availability and sclaibility if needed with the needed resources to provide it with secure access which are:
 VPC,Subnet,Cloud NAT,Cloud NAT router,Jumphost server,IAP ssh permission.
 ![image](https://github.com/Gaser98/Infrastructure/assets/76227165/ee741336-0738-46df-b6c7-6e9192af0e4f)
 
@@ -45,7 +45,7 @@ kubectl decribe deployment [deployment]
 helm install jenkins jenkins/jenkins --set controller.serviceType=LoadBalancer --set controller.nodePort=30000 --set persistence.enabled=true
 # Modules Description
 ### k8s
-serviceAccount : to create a 'jenkins-admin' clusterRole, 'jenkins-admin' ServiceAccount and binds the 'clusterRole' to the service account.
+serviceAccount : to create a 'jenkins-admin' clusterRole, 'jenkins-admin' ServiceAccount and binds the 'clusterRole' to the service account
 
 
 volume: to create persistent volume to keep my jenkins server files
