@@ -12,6 +12,8 @@ After that,I setup IAP desktop to use the jumphost server to access my private c
 ## Jenkins 
 Jenkins server deployed with either k8s deployment files or Helm customized chart which was the preffered method as for easier installation and more stable. 
 
+Jenkins worker node was deployed so Jenkins pipeline can execute docker commands.
+
 # Commands
 ## k8s:
 kubectl create namespace 
