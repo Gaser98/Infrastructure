@@ -43,6 +43,16 @@ kubectl describe pod [pod]
 kubectl decribe deployment [deployment]
 ## Helm:
 ### Helm installation commands
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 > get_helm.sh
+
+
+chmod +x get_helm.sh
+
+
+./get_helm.sh
+
+
+helm version
 ### Customized the chart installtion using :
 helm install jenkins jenkins/jenkins --set controller.serviceType=LoadBalancer --set controller.nodePort=30000 --set persistence.enabled=true
 # Modules Description
