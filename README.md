@@ -58,5 +58,10 @@ service : to provide access to my jenkins service using thise nodeport service
 
 deployment : to deploy jenkins server and provide a pod to host it 
 
+
+worker-pod-deployment : to deploy worker pod to work as jenkins agent 
+
+
+worker service : to make the worker accessible
 ### Helm:
 values : displays editted values and the rest of values of the customized chart
