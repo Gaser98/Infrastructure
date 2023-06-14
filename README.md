@@ -54,7 +54,9 @@ chmod +x get_helm.sh
 
 helm version
 ### Customized the chart installtion using :
+'''bash
 helm install jenkins jenkins/jenkins --set controller.serviceType=LoadBalancer --set controller.nodePort=30000 --set persistence.enabled=true
+'''
 # Modules Description
 ### k8s
 serviceAccount : to create a 'jenkins-admin' clusterRole, 'jenkins-admin' ServiceAccount and binds the 'clusterRole' to the service account
