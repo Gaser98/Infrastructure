@@ -59,7 +59,7 @@ helm install jenkins jenkins/jenkins --set controller.serviceType=LoadBalancer -
 ```
 # Modules Description
 ### k8s
-serviceAccount : to create a 'jenkins-admin' clusterRole, 'jenkins-admin' ServiceAccount and binds the 'clusterRole' to the service account
+serviceAccount : to create a 'jenkins-admin' clusterRole, 'jenkins-admin' ServiceAccount and bind the 'clusterRole' to the service account
 
 
 volume: to create persistent volume to keep my jenkins server files
